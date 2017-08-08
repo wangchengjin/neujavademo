@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table{border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;}
+        th,td{border-right:1px solid #888;border-bottom:1px solid #888;padding:5px 15px;}
+        th{font-weight:bold;background:#ccc;}
+    </style>
+</head>
+<body>
+    
+    <h1>寄云云开发平台Java应用示例</h1>
+    
+<!--<p th:text="'Hello, ' + ${name} + '!'" />-->
+<form action="/" method="post">
+    姓名: <input type="text" name="name" value="" />
+    年龄: <input type="text" name="age" value="" />
+    <input type="submit" value="提交"/>
+</form>
+<p></p>
+<table border="1" style="width: 500px;">
+    <tr>
+        <td>id</td>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+    <tr th:each="user:${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
