@@ -69,24 +69,28 @@
 
 	<repositories>
 		<repository>
+
 			<id>spring-releases</id>
 			<url>https://repo.spring.io/libs-release</url>
-			<!--
+            <!--
             <id>Central</id>
             <name>central-repository</name>
             <url>http://192.168.1.105:8081/nexus/content/repositories/central/</url>
             -->
-		</repository>
+
+        </repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
+
 			<id>spring-releases</id>
 			<url>https://repo.spring.io/libs-release</url>
-			<!--
+            <!--
             <id>Central</id>
             <name>central-repository</name>
             <url>http://192.168.1.105:8081/nexus/content/repositories/central/</url>
             -->
+
 		</pluginRepository>
 	</pluginRepositories>
 

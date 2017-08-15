@@ -1,10 +1,9 @@
 package com.neucloud.entity;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by neucloud on 2017/6/22.
@@ -16,7 +15,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
+
     public String name;
+
     public int age;
 
     public User() {
