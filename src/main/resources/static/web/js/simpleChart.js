@@ -43,13 +43,13 @@ $.get('/windDataJson').done(function (mapData) {
         name: legends[0],
         type: 'scatter',
         //large:true,
-        symbolSize: 3,
+        symbolSize: 5,
         data: scatterNomal
     }, {
         name: legends[1],
         type: 'scatter',
         //large:true,
-        symbolSize: 3,
+        symbolSize: 5,
         data: scatterException
     }, {
             name: legends[2],
