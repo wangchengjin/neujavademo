@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>风电数据</title>
+</head>
+<body>
+
+<div id="mainChart" style="width:1500px;height:800px;"></div>
+<a th:href="@{/analyse}">风电分析</a>
+<script th:src="@{/public/echarts/3.6.2/echarts.common.min.js}"></script>
+<script th:src="@{/public/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{/public/web/js/windSpeed.js}"></script>
+</body>
+</html>

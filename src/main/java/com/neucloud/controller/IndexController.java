@@ -57,9 +57,14 @@ public class IndexController {
         return "redirect:/users";
     }
 
-    @GetMapping("/")
+    @GetMapping("/analyse")
     public String chart() {
         return "simpleChart";
+    }
+
+    @GetMapping("/")
+    public String windSpeed() {
+        return "windSpeed";
     }
 
     @GetMapping("/windResultJson")
