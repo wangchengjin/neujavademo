@@ -67,7 +67,7 @@ $.get('/windDataJson').done(function (mapData) {
     myChart.hideLoading();
     myChart.setOption({
         title: {
-            text: '风电数据分析示例'
+            text: '风电数据分析'
         },
         tooltip: {},
         legend: {

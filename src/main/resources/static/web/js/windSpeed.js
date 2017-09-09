@@ -43,7 +43,7 @@ option = {
     xAxis: {
         type: 'time',
         splitLine: {
-            show: false
+            //show: false
         },
         name: '时间',
         nameLocation: 'middle',
@@ -58,7 +58,7 @@ option = {
         type: 'value',
         boundaryGap: [0, '100%'],
         splitLine: {
-            show: false
+            //show: false
         }
     },
     series: [{
@@ -89,74 +89,10 @@ option = {
 };
 
 
-$.get('/data/top1000').done(function (mapData) {
-    for (var i = 0; i < mapData.length; i++) {
-        var theTime = new Date(mapData[i].time);
-        var timeStr = theTime.toString();
-        data.push({
-            name: timeStr,
-            value: [
-                //theTime.getFullYear() + '/' + (theTime.getMonth() + 1) + '/' + theTime.getDate() + ' ' + theTime.getHours() + ':' + theTime.getMinutes() + ':' + theTime.getSeconds(),
-                theTime,
-                mapData[i].windSpeed
-            ]
-        });
-        data2.push({
-            name: timeStr,
-            value: [
-                //theTime.getFullYear() + '/' + (theTime.getMonth() + 1) + '/' + theTime.getDate() + ' ' + theTime.getHours() + ':' + theTime.getMinutes() + ':' + theTime.getSeconds(),
-                theTime,
-                mapData[i].power
-            ]
-        });
-
-        if(mapData[i].label == "normal") {
-            data3.push({
-                name: timeStr,
-                value: [
-                    theTime,
-                    1
-                ]
-            });
-            data4.push({
-                name: timeStr,
-                value: [
-                    theTime,
-                    '-'
-                ]
-            });
-        }else{
-            data3.push({
-                name: timeStr,
-                value: [
-                    theTime,
-                    '-'
-                ]
-            });
-            data4.push({
-                name: timeStr,
-                value: [
-                    theTime,
-                    1
-                ]
-            });
-        }
-
-    }
-    option.series[0].data = data;
-    option.series[1].data = data2;
-    option.series[2].data = data3;
-    option.series[3].data = data4;
-
-    myChart.setOption(option);
-    myChart.hideLoading();
-
-});
-
 var begin = 0;
 
-setInterval(function () {
-    begin += 10;
+var myTimer = setInterval(function () {
+    begin += 60;
     $.get('/data/nextOne?offset=' + begin).done(function (rdata) {
         for (var i = 0; i < rdata.length; i++) {
             var theTime = new Date(rdata[i].time);
@@ -231,3 +167,69 @@ setInterval(function () {
 
     });
 }, 3000);
+
+
+$.get('/data/top1000').done(function (mapData) {
+    for (var i = 0; i < mapData.length; i++) {
+        var theTime = new Date(mapData[i].time);
+        var timeStr = theTime.toString();
+        data.push({
+            name: timeStr,
+            value: [
+                //theTime.getFullYear() + '/' + (theTime.getMonth() + 1) + '/' + theTime.getDate() + ' ' + theTime.getHours() + ':' + theTime.getMinutes() + ':' + theTime.getSeconds(),
+                theTime,
+                mapData[i].windSpeed
+            ]
+        });
+        data2.push({
+            name: timeStr,
+            value: [
+                //theTime.getFullYear() + '/' + (theTime.getMonth() + 1) + '/' + theTime.getDate() + ' ' + theTime.getHours() + ':' + theTime.getMinutes() + ':' + theTime.getSeconds(),
+                theTime,
+                mapData[i].power
+            ]
+        });
+
+        if(mapData[i].label == "normal") {
+            data3.push({
+                name: timeStr,
+                value: [
+                    theTime,
+                    1
+                ]
+            });
+            data4.push({
+                name: timeStr,
+                value: [
+                    theTime,
+                    '-'
+                ]
+            });
+        }else{
+            data3.push({
+                name: timeStr,
+                value: [
+                    theTime,
+                    '-'
+                ]
+            });
+            data4.push({
+                name: timeStr,
+                value: [
+                    theTime,
+                    1
+                ]
+            });
+        }
+
+    }
+    option.series[0].data = data;
+    option.series[1].data = data2;
+    option.series[2].data = data3;
+    option.series[3].data = data4;
+
+    myChart.setOption(option);
+    myChart.hideLoading();
+    myTimer;
+
+});
