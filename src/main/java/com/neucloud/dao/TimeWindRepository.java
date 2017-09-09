@@ -14,10 +14,10 @@ import java.util.List;
 @Repository("timeWindRepository")
 public interface TimeWindRepository extends JpaRepository<TimeWind, Long>{
 
-    @Query(value = "select id,time,wind_speed,power,label from label_traindata order by time asc limit 1000" ,nativeQuery = true)
+    @Query(value = "select id,time,wind_speed,power,label from label_traindata limit 1000" ,nativeQuery = true)
     List<TimeWind> findTop1000();
 
-    @Query(value = "select id,time,wind_speed,power,label from label_traindata order by time asc limit ?, 60" ,nativeQuery = true)
+    @Query(value = "select id,time,wind_speed,power,label from label_traindata limit ?, 60" ,nativeQuery = true)
     List<TimeWind> findNext(int offset);
 
 }
